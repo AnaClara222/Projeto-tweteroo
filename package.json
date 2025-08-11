@@ -1,0 +1,22 @@
+{
+  "name": "tweteroo_back-end",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "Ana Clara Fonseca",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "joi": "^18.0.0",
+    "mongodb": "^6.18.0",
+    "nodemon": "^3.1.10"
+  }
+}
