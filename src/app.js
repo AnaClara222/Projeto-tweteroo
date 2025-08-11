@@ -10,6 +10,7 @@ app.use(express.json());
 
 dotenv.config();
 
+//Inicia a conexão com o Mongo
 const mongoClient = new MongoClient(process.env.DataBase_URL);
 let db;
 
@@ -34,6 +35,7 @@ const tweetSchema = joi.object({
     tweet: joi.string().required(),
 })
 
+// 1º POST (/sign-up)
 app.post("/sign-up", async (req, res) => {
     const { username, avatar } = req.body;
 
@@ -60,6 +62,7 @@ app.post("/sign-up", async (req, res) => {
     }
 });
 
+// 2º GET (/tweets)
 app.get("/tweets", async (req, res) => {
     try {
         const tweets = await db.collection("tweets").find().sort({ _id: -1 }).toArray()
@@ -84,6 +87,7 @@ app.get("/tweets", async (req, res) => {
     }
 })
 
+// 3º POST (/tweets)
 app.post("/tweets", async (req, res) => {
     const { tweet, username } = req.body;
 
@@ -105,6 +109,7 @@ app.post("/tweets", async (req, res) => {
     }
 })
 
+// 4º PUT (/tweets/:id)
 app.put("/tweets/:id", async (req, res) => {
     const { id } = req.params;
     const { username, tweet } = req.body;
@@ -134,6 +139,7 @@ app.put("/tweets/:id", async (req, res) => {
     }
 })
 
+// 5º DELETE (/tweets/:id)
 app.delete("/tweets/:id", async (req, res) => {
     const { id } = req.params;
 
