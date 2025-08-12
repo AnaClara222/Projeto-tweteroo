@@ -145,7 +145,7 @@ app.delete("/tweets/:id", async (req, res) => {
 
     try {
         const resultado = await db.collection("tweets").deleteOne({ _id: new ObjectId(id) })
-        if (resultado.deleteCount === 0) {
+        if (resultado.deletedCount === 0) {
             return res.status(404).send("Tweet não enontrado")
         }
         res.status(200).send("Tweet deletado com sucesso")
